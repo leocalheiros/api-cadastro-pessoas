@@ -22,3 +22,7 @@ class PersonRepositoryInterface(ABC):
     @abstractmethod
     def list_all_people(self):
         pass
+
+    @abstractmethod
+    def person_exist(self, name):
+        pass
