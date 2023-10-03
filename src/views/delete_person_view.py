@@ -4,7 +4,7 @@ from src.views.interface.views_interface import ViewInterface
 from src.controllers.interface.person_controller_interface import PersonInterface
 
 
-class FindPersonView(ViewInterface):
+class DeletePersonView(ViewInterface):
     def __init__(self, controller: PersonInterface) -> None:
         self.__controller = controller
 
@@ -15,4 +15,3 @@ class FindPersonView(ViewInterface):
             return HttpResponse(status_code=200, body=response)
         except Exception as exception:
             return HttpResponse(status_code=500, body={"error": str(exception)})
-        

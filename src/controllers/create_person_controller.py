@@ -2,7 +2,7 @@ from src.controllers.interface.person_controller_interface import PersonInterfac
 from src.models.person_repository import PersonRepositoryInterface
 
 
-class CreatePersonController(PersonInterface):
+class CreatePerson(PersonInterface):
     def __init__(self, repo: PersonRepositoryInterface) -> None:
         self.__repo = repo
 

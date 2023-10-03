@@ -4,7 +4,7 @@ from src.views.interface.views_interface import ViewInterface
 from src.controllers.interface.person_controller_interface import PersonInterface
 
 
-class FindPersonView(ViewInterface):
+class UpdatePersonView(ViewInterface):
     def __init__(self, controller: PersonInterface) -> None:
         self.__controller = controller
 
