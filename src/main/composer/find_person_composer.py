@@ -3,7 +3,7 @@ from src.controllers.find_person_by_name_controller import FindPerson
 from src.models.person_repository import PersonRepository
 
 
-def delete_person_composer():
+def find_person_composer():
     repo = PersonRepository()
     controller = FindPerson(repo)
     view = FindPersonView(controller)

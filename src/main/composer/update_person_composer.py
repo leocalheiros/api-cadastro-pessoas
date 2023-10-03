@@ -3,7 +3,7 @@ from src.controllers.update_person_controller import UpdatePerson
 from src.models.person_repository import PersonRepository
 
 
-def delete_person_composer():
+def update_person_composer():
     repo = PersonRepository()
     controller = UpdatePerson(repo)
     view = UpdatePersonView(controller)
