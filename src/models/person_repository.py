@@ -30,3 +30,7 @@ class PersonRepository(PersonRepositoryInterface):
     def list_all_people(self):
         all_people = PersonModel.query.all()
         return all_people
+
+    def person_exist(self, name):
+        person = self.find_person_by_name(name)
+        return bool(person)
