@@ -16,7 +16,7 @@ class CreatePersonController(PersonInterface):
         )
         return new_person
 
-    def __validate(self, person: dict):
+    def __validate(self, person: dict) -> None:
         name = person.get("name")
         age = person.get("age")
         neighborhood = person.get("neighborhood")
