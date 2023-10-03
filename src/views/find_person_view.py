@@ -10,7 +10,7 @@ class FindPersonView(ViewInterface):
 
     def handle(self, http_request: HttpRequest) -> HttpResponse:
         try:
-            name = http_request.query_params.get("name")
+            name = http_request.body.get("name")
             response = self.__controller.operate(name)
             return HttpResponse(status_code=200, body=response)
         except Exception as exception:
