@@ -14,7 +14,7 @@ class CreatePerson(PersonInterface):
             person["neighborhood"],
             person["profession"]
         )
-        return new_person
+        return "Usuário criado com sucesso!"
 
     def __validate(self, person: dict) -> None:
         name = person.get("name")
