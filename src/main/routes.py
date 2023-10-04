@@ -14,7 +14,7 @@ def create_person():
     return jsonify(http_response.body, http_response.status_code)
 
 
-@person_blueprint.route('/find/<name>', methods=['GET'])
+@person_blueprint.route('/find', methods=['GET'])
 def find_person():
     http_response = request_adapter(request, find_person_composer())
     return jsonify(http_response.body, http_response.status_code)
@@ -26,7 +26,7 @@ def update_person():
     return jsonify(http_response.body, http_response.status_code)
 
 
-@person_blueprint.route('/delete/<name>', methods=['DELETE'])
+@person_blueprint.route('/delete', methods=['DELETE'])
 def delete_person():
     http_response = request_adapter(request, delete_person_composer())
     return jsonify(http_response.body, http_response.status_code)
