@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-O Sistema de Gerenciamento de Pessoas é uma aplicação web construída com o framework Flask, que permite criar, encontrar, atualizar e excluir registros de pessoas em um banco de dados. Este projeto foi desenvolvido como uma demonstração de como criar uma aplicação web simples com Flask e implementar funcionalidades CRUD (Criar, Ler, Atualizar, Deletar) usando boas práticas de desenvolvimento.
+O Sistema de Gerenciamento de Pessoas é uma API construída com o framework Flask, que permite criar, encontrar, atualizar e excluir registros de pessoas em um banco de dados.
 
 ## Funcionalidades Principais
 
