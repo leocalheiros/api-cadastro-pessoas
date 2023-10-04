@@ -1,6 +1,6 @@
 from src.models.interface.person_repository_interface import PersonRepositoryInterface
 from src.models.person_model import PersonModel
-from src.main.server import db
+from src.main.config.database import db
 
 
 class PersonRepository(PersonRepositoryInterface):
