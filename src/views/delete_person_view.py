@@ -12,6 +12,6 @@ class DeletePersonView(ViewInterface):
         try:
             name = http_request.body.get("name")
             response = self.__controller.operate(name)
-            return HttpResponse(status_code=200, body=response)
+            return HttpResponse(status_code=200, body={"message": response})
         except Exception as exception:
             return HttpResponse(status_code=500, body={"error": str(exception)})

@@ -12,6 +12,6 @@ class CreatePersonView(ViewInterface):
         try:
             person_data = http_request.body
             response = self.__controller.operate(person_data)
-            return HttpResponse(status_code=200, body=response)
+            return HttpResponse(status_code=200, body={"response": response})
         except Exception as exception:
             return HttpResponse(status_code=500, body={"error": str(exception)})
