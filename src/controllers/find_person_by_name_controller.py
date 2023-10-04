@@ -9,7 +9,13 @@ class FindPerson(PersonInterface):
     def operate(self, name: str) -> str:
         self.__validate(name)
         person = self.__repo.find_person_by_name(name)
-        return person
+        person_dict = {
+                "name": person.name,
+                "age": person.age,
+                "neighborhood": person.neighborhood,
+                "profession": person.profession
+            }
+        return f"Pessoa encontrada! {person_dict}"
 
     def __validate(self, name) -> None:
         if not name:
