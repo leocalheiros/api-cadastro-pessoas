@@ -1,5 +1,6 @@
 from src.controllers.interface.person_controller_interface import PersonInterface
 from src.models.person_repository import PersonRepositoryInterface
+from src.errors.types.http_not_found import HttpNotFoundError
 
 
 class CreatePerson(PersonInterface):
@@ -18,11 +19,6 @@ class CreatePerson(PersonInterface):
 
     def __validate(self, person: dict) -> None:
         name = person.get("name")
-        age = person.get("age")
-        neighborhood = person.get("neighborhood")
-        profession = person.get("profession")
 
-        if not (name and age and neighborhood and profession):
-            raise ValueError('Parâmetros de entrada inválidos')
         if self.__repo.person_exist(name):
-            raise ValueError('Já existe uma pessoa com esse nome cadastrada')
+            raise HttpNotFoundError("Pessoa com nome não encontrada no banco de dados")

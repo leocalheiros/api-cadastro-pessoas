@@ -1,5 +1,6 @@
 from src.controllers.interface.person_controller_interface import PersonInterface
 from src.models.person_repository import PersonRepositoryInterface
+from src.errors.types.http_not_found import HttpNotFoundError
 
 
 class DeletePerson(PersonInterface):
@@ -12,7 +13,5 @@ class DeletePerson(PersonInterface):
         return f"Pessoa com nome '{name}' foi deletada com sucesso"
 
     def __validate(self, name: str) -> None:
-        if not name:
-            raise ValueError("Nome da pessoa não foi fornecido")
         if not self.__repo.person_exist(name):
-            raise ValueError("Pessoa não encontrada no banco de dados")
+            raise HttpNotFoundError("Pessoa não encontrada no banco de dados")

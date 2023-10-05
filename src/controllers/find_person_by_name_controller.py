@@ -1,5 +1,6 @@
 from src.controllers.interface.person_controller_interface import PersonInterface
 from src.models.person_repository import PersonRepositoryInterface
+from src.errors.types.http_not_found import HttpNotFoundError
 
 
 class FindPerson(PersonInterface):
@@ -18,7 +19,5 @@ class FindPerson(PersonInterface):
         return f"Pessoa encontrada! {person_dict}"
 
     def __validate(self, name) -> None:
-        if not name:
-            raise ValueError("Nome da pessoa não foi fornecido")
         if not self.__repo.person_exist(name):
-            raise ValueError("Pessoa com nome não encontrada no banco de dados")
+            raise HttpNotFoundError("Pessoa com nome não encontrada no banco de dados")
