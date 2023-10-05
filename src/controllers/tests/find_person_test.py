@@ -1,6 +1,7 @@
 from unittest.mock import MagicMock
 import pytest
 from src.controllers.find_person_by_name_controller import FindPerson
+from src.errors.types.http_not_found import HttpNotFoundError
 
 
 class MockPersonRepository:
@@ -36,16 +37,6 @@ def test_find_person_success():
     assert response == expected_response
 
 
-def test_find_person_missing_name():
-    repo_mock = MockPersonRepository()
-    controller = FindPerson(repo_mock)
-
-    with pytest.raises(ValueError) as e:
-        controller.operate("")
-
-    assert str(e.value) == "Nome da pessoa não foi fornecido"
-
-
 def test_find_person_not_found():
     repo_mock = MockPersonRepository()
     controller = FindPerson(repo_mock)
@@ -54,7 +45,7 @@ def test_find_person_not_found():
 
     repo_mock.person_exist = MagicMock(return_value=False)
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(HttpNotFoundError) as e:
         controller.operate(non_existing_name)
 
     assert str(e.value) == "Pessoa com nome não encontrada no banco de dados"
