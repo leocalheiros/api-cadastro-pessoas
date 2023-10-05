@@ -1,5 +1,5 @@
 import pytest
-from src.validators.create_person_validator import create_person_validator
+from src.validators.all_fields_person_validator import all_fields_validator
 from src.errors.types.http_unprocessable_entity import HttpUnprocessableEntityError
 
 
@@ -18,4 +18,4 @@ def test_create_person_validator_fail():
     }
 
     with pytest.raises(HttpUnprocessableEntityError):
-        create_person_validator(request)
+        all_fields_validator(request)
