@@ -1,9 +1,8 @@
 from unittest.mock import MagicMock
 import pytest
 from src.controllers.delete_person_by_name_controller import DeletePerson
-from src.validators.by_name_validator import by_name_validator
-from src.errors.types.http_unprocessable_entity import HttpUnprocessableEntityError
 from src.errors.types.http_not_found import HttpNotFoundError
+
 
 class MockPersonRepository:
     def delete_person_by_name(self, name):

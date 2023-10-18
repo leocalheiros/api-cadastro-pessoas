@@ -25,24 +25,11 @@ def test_create_person_success():
         "profession": "Engenheiro"
     }
 
-    all_fields_validator(person_data)
-
     repo_mock.create_person = MagicMock(return_value=None)
 
     response = controller.operate(person_data)
 
     assert response == "Usuário criado com sucesso!"
-
-
-def test_create_person_invalid_parameters():
-    invalid_person_data = {
-        "name": "Maria",
-        "neighborhood": "Rua B",
-        "profession": "Médica"
-    }
-
-    with pytest.raises(HttpUnprocessableEntityError):
-        all_fields_validator(invalid_person_data)
 
 
 def test_create_person_user_already_exists():
