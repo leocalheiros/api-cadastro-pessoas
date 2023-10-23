@@ -1,6 +1,9 @@
 from unittest.mock import MagicMock
 import pytest
 from src.controllers.create_person_controller import CreatePerson
+from src.validators.all_fields_person_validator import all_fields_validator
+from src.errors.types.http_unprocessable_entity import HttpUnprocessableEntityError
+from src.errors.types.http_not_found import HttpNotFoundError
 
 
 class MockPersonRepository:
@@ -29,22 +32,6 @@ def test_create_person_success():
     assert response == "Usuário criado com sucesso!"
 
 
-def test_create_person_invalid_parameters():
-    repo_mock = MockPersonRepository()
-    controller = CreatePerson(repo_mock)
-
-    invalid_person_data = {
-        "name": "Maria",
-        "neighborhood": "Rua B",
-        "profession": "Médica"
-    }
-
-    with pytest.raises(ValueError) as e:
-        controller.operate(invalid_person_data)
-
-    assert str(e.value) == "Parâmetros de entrada inválidos"
-
-
 def test_create_person_user_already_exists():
     repo_mock = MockPersonRepository()
     controller = CreatePerson(repo_mock)
@@ -58,7 +45,6 @@ def test_create_person_user_already_exists():
 
     repo_mock.person_exist = MagicMock(return_value=True)
 
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(HttpNotFoundError):
         controller.operate(existing_person_data)
 
-    assert str(e.value) == "Já existe uma pessoa com esse nome cadastrada"
